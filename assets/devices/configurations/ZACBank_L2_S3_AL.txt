@@ -34,3 +34,14 @@ ZACBank_L2_S3_AL(config-if-range)#switchport mode trunk
 ZACBank_L2_S3_AL(config-if-range)#switchport trunk allowed vlan 50-176
 ZACBank_L2_S3_AL(config-if-range)#switchport nonegotiate
 ZACBank_L2_S3_AL(config-if-range)#channel-group 4 mode active
+
+//Assigning VLANS to Switchports
+ZACBank_L2_S3_AL(config-if)#interface fastEthernet 0/1
+ZACBank_L2_S3_AL(config-if)#switchport mode access
+ZACBank_L2_S3_AL(config-if)#switchport access vlan 128
+ZACBank_L2_S3_AL(config-if)#interface fastEthernet 0/2
+ZACBank_L2_S3_AL(config-if)#switchport mode access
+ZACBank_L2_S3_AL(config-if)#switchport access vlan 160
+
+
+

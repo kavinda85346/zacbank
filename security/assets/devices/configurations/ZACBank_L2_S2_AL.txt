@@ -18,3 +18,12 @@ ZACBank_L2_S2_AL(config-if-range)#switchport mode trunk
 ZACBank_L2_S2_AL(config-if-range)#switchport trunk native vlan 200
 ZACBank_L2_S2_AL(config-if-range)#no switchport trunk allowed vlan 50-176
 ZACBank_L2_S2_AL(config-if-range)#switchport trunk allowed vlan 50-200
+
+//Assigning unused switchports to crated native vlan 
+ZACBank_L2_S2_AL(config-if-range)#interface range fastEthernet 0/3-20
+ZACBank_L2_S2_AL(config-if-range)#switchport mode access
+ZACBank_L2_S2_AL(config-if-range)#switchport access vlan 200
+
+//Administratively shutting down unused swithports
+ZACBank_L2_S2_AL(config-if-range)#interface range fastEthernet 0/3-20
+ZACBank_L2_S2_AL(config-if-range)#shutdown
