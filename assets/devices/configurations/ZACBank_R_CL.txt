@@ -1,0 +1,73 @@
+//Startup Configuration
+Router>enable
+Router#configure terminal
+Router(config)#hostname ZACBank_R_CL
+
+//Subinterface Configuration
+ZACBank_R_CL(config)#interface gigabitEthernet 0/0.50
+ZACBank_R_CL(config-subif)#ip address 10.5.2.30 255.255.255.224
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 50
+ZACBank_R_CL(config-subif)#description management vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 0/0.100
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 100
+ZACBank_R_CL(config-subif)#ip address 10.5.2.62 255.255.255.224
+ZACBank_R_CL(config-subif)#description core vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 0/0.150
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 150
+ZACBank_R_CL(config-subif)#ip address 10.5.2.94 255.255.255.224
+ZACBank_R_CL(config-subif)#description voice vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 0/0.96
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 96
+ZACBank_R_CL(config-subif)#ip address 10.5.2.126 255.255.255.224
+ZACBank_R_CL(config-subif)#description security vlan interface
+ZACBank_R_CL(config-subif)#exit
+ZACBank_R_CL(config)#interface gigabitEthernet 1/0.128
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 128
+ZACBank_R_CL(config-subif)#ip address 10.5.2.158 255.255.255.224
+ZACBank_R_CL(config-subif)#description atm vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 1/0.160
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 160
+ZACBank_R_CL(config-subif)#ip address 10.5.2.174 255.255.255.240
+ZACBank_R_CL(config-subif)#description staff vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 1/0.176
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 176
+ZACBank_R_CL(config-subif)#ip address 10.5.2.190 255.255.255.240
+ZACBank_R_CL(config-subif)#description recovery vlan interface
+ZACBank_R_CL(config-subif)#exit
+ZACBank_R_CL(config)#interface gigabitEthernet 0/0
+ZACBank_R_CL(config-if)#no shutdown
+ZACBank_R_CL(config-if)#exit
+ZACBank_R_CL(config)#interface gigabitEthernet 1/0
+ZACBank_R_CL(config-if)#no shutdown
+ZACBank_R_CL(config-if)#exit
+
+//DHCP Pool Configuration
+ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.24 10.5.2.30
+ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.56 10.5.2.62
+ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.88 10.5.2.94
+ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.120 10.5.2.126
+ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.152 10.5.2.158
+ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.168 10.5.2.174
+ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.184 10.5.2.190
+ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.200 10.5.2.206
+ZACBank_R_CL(config)#ip dhcp pool management
+ZACBank_R_CL(dhcp-config)#network 10.5.2.0 255.255.255.224
+ZACBank_R_CL(dhcp-config)#default-router 10.5.2.30
+ZACBank_R_CL(dhcp-config)#ip dhcp pool core
+ZACBank_R_CL(dhcp-config)#network 10.5.2.32 255.255.255.224
+ZACBank_R_CL(dhcp-config)#default-router 10.5.2.62
+ZACBank_R_CL(dhcp-config)#ip dhcp pool voice
+ZACBank_R_CL(dhcp-config)#network 10.5.2.64 255.255.255.224
+ZACBank_R_CL(dhcp-config)#default-router 10.5.2.94
+ZACBank_R_CL(dhcp-config)#ip dhcp pool security
+ZACBank_R_CL(dhcp-config)#network 10.5.2.96 255.255.255.224
+ZACBank_R_CL(dhcp-config)#default-router 10.5.2.126
+ZACBank_R_CL(dhcp-config)#ip dhcp pool atm
+ZACBank_R_CL(dhcp-config)#network 10.5.2.128 255.255.255.224
+ZACBank_R_CL(dhcp-config)#default-router 10.5.2.158
+ZACBank_R_CL(dhcp-config)#ip dhcp pool staff
+ZACBank_R_CL(dhcp-config)#network 10.5.2.160 255.255.255.240
+ZACBank_R_CL(dhcp-config)#default-router 10.5.2.174
+ZACBank_R_CL(dhcp-config)#ip dhcp pool recovery
+ZACBank_R_CL(dhcp-config)#network 10.5.2.176 255.255.255.240
+ZACBank_R_CL(dhcp-config)#default-router 10.5.2.190

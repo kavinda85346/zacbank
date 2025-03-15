@@ -6,4 +6,4 @@ CyberSafe accepted the request of ZACBank and conducted the audit. Several vulne
 
 Project Structure
 -->Assets Folder:- Contains all the assets that belongs to the ZACBank.
--->Security:- Contains security policies applied for the safety of the assets.
+-->Security:- Contains security policies and security configurations applied to safe guard the assets.

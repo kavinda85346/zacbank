@@ -1,0 +1,16 @@
+//Changing Default VLAN
+ZACBank_L3_S1_DL(config-vlan)#vlan 200
+ZACBank_L3_S1_DL(config-vlan)#name native
+
+//Trunk Configuration
+ZACBank_L3_S1_DL(config)#interface range gigabitEthernet 1/0/23-24
+ZACBank_L3_S1_DL(config-if-range)#switchport mode trunk
+ZACBank_L3_S1_DL(config-if-range)#switchport trunk native vlan 200
+ZACBank_L3_S1_DL(config-if-range)#no switchport trunk allowed vlan 50-176
+ZACBank_L3_S1_DL(config-if-range)#switchport trunk allowed vlan 50-200
+ZACBank_L3_S1_DL(config-if-range)#exit
+ZACBank_L3_S1_DL(config-if)#interface gigabitEthernet 1/1/1
+ZACBank_L3_S1_DL(config-if)#switchport mode trunk
+ZACBank_L3_S1_DL(config-if)#switchport mode trunk native vlan 200
+ZACBank_L3_S1_DL(config-if)#no switchport trunk allowed vlan 50-176
+ZACBank_L3_S1_DL(config-if)#switchport trunk allowed vlan 50-200

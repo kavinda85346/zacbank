@@ -1,0 +1,31 @@
+//Startup Configuration
+Switch>enable
+Switch#configure terminal
+Switch(config)#hostname ZACBank_L2_S4_AL
+
+//Vlan Configuration
+ZACBank_L2_S4_AL(config)#vlan 50
+ZACBank_L2_S4_AL(config-vlan)#name management
+ZACBank_L2_S4_AL(config-vlan)#vlan 100
+ZACBank_L2_S4_AL(config-vlan)#name core
+ZACBank_L2_S4_AL(config-vlan)#vlan 150
+ZACBank_L2_S4_AL(config-vlan)#name voice
+ZACBank_L2_S4_AL(config-vlan)#vlan 96
+ZACBank_L2_S4_AL(config-vlan)#name security
+ZACBank_L2_S4_AL(config-vlan)#vlan 128
+ZACBank_L2_S4_AL(config-vlan)#name atm
+ZACBank_L2_S4_AL(config-vlan)#vlan 160
+ZACBank_L2_S4_AL(config-vlan)#name staff
+ZACBank_L2_S4_AL(config-vlan)#vlan 176
+ZACBank_L2_S4_AL(config-vlan)#name recovery
+
+//Trunk Configuration
+ZACBank_L2_S4_AL(config-if)#interface range gigabitEthernet 0/1-2
+ZACBank_L2_S4_AL(config-if-range)#switchport mode trunk
+ZACBank_L2_S4_AL(config-if-range)#switchport trunk allowed vlan 50-176
+ZACBank_L2_S4_AL(config-if-range)#switchport nonegotiate
+ZACBank_L2_S4_AL(config-if)#interface range fastEthernet 0/23-24
+ZACBank_L2_S4_AL(config-if-range)#switchport mode trunk
+ZACBank_L2_S4_AL(config-if-range)#switchport trunk allowed vlan 50-176
+ZACBank_L2_S4_AL(config-if-range)#switchport nonegotiate
+ZACBank_L2_S1_AL(config-if-range)#channel-group 4 mode passive

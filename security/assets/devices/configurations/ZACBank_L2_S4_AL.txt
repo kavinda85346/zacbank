@@ -1,0 +1,15 @@
+//Changing Default VLAN
+ZACBank_L2_S4_AL(config-vlan)#vlan 200
+ZACBank_L2_S4_AL(config-vlan)#name native
+
+//Trunk Configuration
+ZACBank_L2_S4_AL(config-if)#interface range gigabitEthernet 0/1-2
+ZACBank_L2_S4_AL(config-if-range)#switchport mode trunk
+ZACBank_L2_S4_AL(config-if-range)#switchport trunk native vlan 200
+ZACBank_L2_S4_AL(config-if-range)#no switchport trunk allowed vlan 50-176
+ZACBank_L2_S4_AL(config-if-range)#switchport trunk allowed vlan 50-200
+ZACBank_L2_S4_AL(config-if)#interface range fastEthernet 0/23-24
+ZACBank_L2_S4_AL(config-if-range)#switchport mode trunk
+ZACBank_L2_S4_AL(config-if-range)#switchport trunk native vlan 200
+ZACBank_L2_S4_AL(config-if-range)#no switchport trunk allowed vlan 50-176
+ZACBank_L2_S4_AL(config-if-range)#switchport trunk allowed vlan 50-200
