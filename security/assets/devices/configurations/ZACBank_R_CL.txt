@@ -3,3 +3,10 @@ ZACBank_R_CL(config-subif)#interface gigabitEthernet 1/0.200
 ZACBank_R_CL(config-subif)#encapsulation dot1Q 200 native
 ZACBank_R_CL(config-subif)#ip address 10.5.2.206 255.255.255.240
 ZACBank_R_CL(config-subif)#description native vlan interface
+
+//Administratively shutting unused ports
+ZACBank_L3_S1_DL(config)#interface gigabitEthernet 3/0
+ZACBank_L3_S1_DL(config-if)#shutdown
+ZACBank_L3_S1_DL(config-if)#interface gigabitEthernet 4/0
+ZACBank_L3_S1_DL(config-if)#shutdown
+

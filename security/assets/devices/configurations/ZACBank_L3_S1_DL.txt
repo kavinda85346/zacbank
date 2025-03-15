@@ -14,3 +14,17 @@ ZACBank_L3_S1_DL(config-if)#switchport mode trunk
 ZACBank_L3_S1_DL(config-if)#switchport mode trunk native vlan 200
 ZACBank_L3_S1_DL(config-if)#no switchport trunk allowed vlan 50-176
 ZACBank_L3_S1_DL(config-if)#switchport trunk allowed vlan 50-200
+
+//Assigning unused switchports to crated native vlan 
+ZACBank_L3_S1_DL(config-if-range)#interface range gigabitEthernet 1/0/5-22
+ZACBank_L3_S1_DL(config-if-range)#switchport mode access
+ZACBank_L3_S1_DL(config-if-range)#switchport access vlan 200
+ZACBank_L3_S1_DL(config-if-range)#interface range gigabitEthernet 1/1/2-4
+ZACBank_L3_S1_DL(config-if-range)#switchport mode access
+ZACBank_L3_S1_DL(config-if-range)#switchport access vlan 200
+
+//Administratively shutting down unused switchports
+ZACBank_L3_S1_DL(config-if-range)#interface range gigabitEthernet 1/0/5-22
+ZACBank_L3_S1_DL(config-if-range)#shutdown
+ZACBank_L3_S1_DL(config-if-range)#interface range gigabitEthernet 1/1/2-4
+ZACBank_L3_S1_DL(config-if-range)#shutdown
