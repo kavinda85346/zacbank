@@ -5,8 +5,21 @@ ZACBank_R_CL(config-subif)#ip address 10.5.2.206 255.255.255.240
 ZACBank_R_CL(config-subif)#description native vlan interface
 
 //Administratively shutting unused ports
-ZACBank_L3_S1_DL(config)#interface gigabitEthernet 3/0
-ZACBank_L3_S1_DL(config-if)#shutdown
-ZACBank_L3_S1_DL(config-if)#interface gigabitEthernet 4/0
-ZACBank_L3_S1_DL(config-if)#shutdown
+ZACBank_R_CL(config)#interface gigabitEthernet 3/0
+ZACBank_R_CL(config-if)#shutdown
+ZACBank_R_CL(config-if)#interface gigabitEthernet 4/0
+ZACBank_R_CL(config-if)#shutdown
+
+//Restricting access to the device for unauthorized users
+ZACBank_R_CL(config)#enable secret cisco@123
+ZACBank_R_CL(config)#line console 0
+ZACBank_R_CL(config-line)#password cisco@123
+ZACBank_R_CL(config-line)#logging synchronous
+ZACBank_R_CL(config-line)#line vty 0 15
+ZACBank_R_CL(config-line)#password cisco@123
+ZACBank_R_CL(config-line)#transport input ssh
+ZACBank_R_CL(config-line)#login local
+ZACBank_R_CL(config-line)#exit
+ZACBank_R_CL(config)#banner motd "Authorized Users Only!"
+ZACBank_R_CL(config)#service password-encryption
 

@@ -19,8 +19,22 @@ ZACBank_L2_S1_AL(config-if-range)#interface range fastEthernet 0/3-22
 ZACBank_L2_S1_AL(config-if-range)#switchport mode access
 ACBank_L2_S1_AL(config-if-range)#switchport access vlan 200
 
-//Administratively shutting down unused swithports
+//Administratively shutting down unused switchports
 ZACBank_L2_S1_AL(config-if-range)#interface range fastEthernet 0/3-22
 ZACBank_L2_S1_AL(config-if-range)#shutdown
+
+//Restricting access to the device for unauthorized users
+ZACBank_L2_S1_AL(config)#enable secret cisco@123
+ZACBank_L2_S1_AL(config)#line console 0
+ZACBank_L2_S1_AL(config-line)#password cisco@123
+ZACBank_L2_S1_AL(config-line)#logging synchronous
+ZACBank_L2_S1_AL(config-line)#line vty 0 15
+ZACBank_L2_S1_AL(config-line)#password cisco@123
+ZACBank_L2_S1_AL(config-line)#transport input ssh
+ZACBank_L2_S1_AL(config-line)#login local
+ZACBank_L2_S1_AL(config-line)#exit
+ZACBank_L2_S1_AL(config)#banner motd "Authorized Users Only!"
+ZACBank_L2_S1_AL(config)#service password-encryption
+
 
 
