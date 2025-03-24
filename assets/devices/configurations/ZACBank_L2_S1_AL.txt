@@ -2,6 +2,7 @@
 Switch>enable
 Switch#configure terminal
 Switch(config)#hostname ZACBank_L2_S1_AL
+ZACBank_L2_S1_AL(config)#ip domain-name zacbank.com
 
 //Vlan Configuration
 ZACBank_L2_S1_AL(config)#vlan 50

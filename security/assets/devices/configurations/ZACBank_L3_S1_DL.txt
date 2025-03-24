@@ -41,3 +41,9 @@ ZACBank_L3_S1_DL(config-line)#login local
 ZACBank_L3_S1_DL(config-line)#exit
 ZACBank_L3_S1_DL(config)#banner motd "Authorized Users Only!"
 ZACBank_L3_S1_DL(config)#service password-encryption
+
+//Configure SSH access to the device
+ZACBank_L3_S1_DL(config)#crypto key generate rsa general-keys modulus 1024
+ZACBank_L3_S1_DL(config)#ip ssh version 2
+ZACBank_L3_S1_DL(config)#username ZACBank_L3_S1_DL secret cisco@123
+ZACBank_L3_S1_DL(config)#no ip domain-lookup

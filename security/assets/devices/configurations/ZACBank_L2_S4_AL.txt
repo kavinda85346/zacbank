@@ -35,3 +35,19 @@ ZACBank_L2_S4_AL(config-line)#login local
 ZACBank_L2_S4_AL(config-line)#exit
 ZACBank_L2_S4_AL(config)#banner motd "Authorized Users Only!"
 ZACBank_L2_S4_AL(config)#service password-encryption
+
+//Enabling Switchport Security
+ZACBank_L2_S4_AL(config)#interface range fastEthernet 0/1-22
+ZACBank_L2_S4_AL(config-if-range)#switchport port-security
+ZACBank_L2_S4_AL(config-if-range)#switch port-security mac-address sticky
+ZACBank_L2_S4_AL(config-if-range)#switch port-security aging time 1440
+ZACBank_L2_S4_AL(config-if-range)#switchport port-security violation shutdown
+
+//Configure SSH access to the device
+ZACBank_L2_S4_AL(config)#crypto key generate rsa general-keys modulus 1024
+ZACBank_L2_S4_AL(config)#ip ssh version 2
+ZACBank_L2_S4_AL(config)#username ZACBank_L2_S4_AL secret cisco@123
+ZACBank_L2_S4_AL(config)#no ip domain-lookup
+
+
+
