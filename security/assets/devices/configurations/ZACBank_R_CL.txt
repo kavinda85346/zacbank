@@ -1,7 +1,51 @@
+//Changing the Default Subinterface IP Address
+ZACBank_R_CL(config)#interface gigabitEthernet 0/0.50
+ZACBank_R_CL(config-subif)#no ip address 10.5.2.1 255.255.255.224
+ZACBank_R_CL(config-subif)#ip address 10.5.2.30 255.255.255.224
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 50
+ZACBank_R_CL(config-subif)#description management vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 0/0.100
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 100
+ZACBank_R_CL(config-subif)#no ip address 10.5.2.33 255.255.255.224
+ZACBank_R_CL(config-subif)#ip address 10.5.2.62 255.255.255.224
+ZACBank_R_CL(config-subif)#description core vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 0/0.150
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 150
+ZACBank_R_CL(config-subif)#no ip address 10.5.2.65 255.255.255.224
+ZACBank_R_CL(config-subif)#ip address 10.5.2.94 255.255.255.224
+ZACBank_R_CL(config-subif)#description voice vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 0/0.96
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 96
+ZACBank_R_CL(config-subif)#no ip address 10.5.2.97 255.255.255.224
+ZACBank_R_CL(config-subif)#ip address 10.5.2.126 255.255.255.224
+ZACBank_R_CL(config-subif)#description security vlan interface
+ZACBank_R_CL(config-subif)#exit
+ZACBank_R_CL(config)#interface gigabitEthernet 1/0.128
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 128
+ZACBank_R_CL(config-subif)#no ip address 10.5.2.129 255.255.255.224
+ZACBank_R_CL(config-subif)#ip address 10.5.2.158 255.255.255.224
+ZACBank_R_CL(config-subif)#description atm vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 1/0.160
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 160
+ZACBank_R_CL(config-subif)#no ip address 10.5.2.161 255.255.255.240
+ZACBank_R_CL(config-subif)#ip address 10.5.2.174 255.255.255.240
+ZACBank_R_CL(config-subif)#description staff vlan interface
+ZACBank_R_CL(config-subif)#interface gigabitEthernet 1/0.176
+ZACBank_R_CL(config-subif)#encapsulation dot1Q 176
+ZACBank_R_CL(config-subif)#no ip address 10.5.2.177 255.255.255.240
+ZACBank_R_CL(config-subif)#ip address 10.5.2.190 255.255.255.240
+ZACBank_R_CL(config-subif)#description recovery vlan interface
+ZACBank_R_CL(config-subif)#exit
+ZACBank_R_CL(config)#interface gigabitEthernet 0/0
+ZACBank_R_CL(config-if)#no shutdown
+ZACBank_R_CL(config-if)#exit
+ZACBank_R_CL(config)#interface gigabitEthernet 1/0
+ZACBank_R_CL(config-if)#no shutdown
+ZACBank_R_CL(config-if)#exit
+
 //Creating Subinterface for changed default vlan
 ZACBank_R_CL(config-subif)#interface gigabitEthernet 1/0.200
 ZACBank_R_CL(config-subif)#encapsulation dot1Q 200 native
-ZACBank_R_CL(config-subif)#ip address 10.5.2.206 255.255.255.240
 ZACBank_R_CL(config-subif)#description native vlan interface
 
 //Administratively shutting unused ports
