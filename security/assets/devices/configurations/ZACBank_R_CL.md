@@ -1,4 +1,7 @@
-//Changing the Default Subinterface IP Addresses
+#### ZACBank_R_CL Device Configuration Alterations ⚙️
+
+**Changing the Default Subinterface IP Addresses**
+```
 ZACBank_R_CL(config)#interface gigabitEthernet 0/0.50
 ZACBank_R_CL(config-subif)#no ip address 10.5.2.1 255.255.255.224
 ZACBank_R_CL(config-subif)#ip address 10.5.2.30 255.255.255.224
@@ -42,8 +45,10 @@ ZACBank_R_CL(config-if)#exit
 ZACBank_R_CL(config)#interface gigabitEthernet 1/0
 ZACBank_R_CL(config-if)#no shutdown
 ZACBank_R_CL(config-if)#exit
+```
 
-//Changing Default DHCP Pool Configuration
+**Changing Default DHCP Pool Configuration**
+```
 ZACBank_R_CL(config)#no ip dhcp excluded-address 10.5.2.1 10.5.2.7
 ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.24 10.5.2.30
 ZACBank_R_CL(config)#no ip dhcp excluded-address 10.5.2.33 10.5.2.39
@@ -81,19 +86,25 @@ ZACBank_R_CL(dhcp-config)#default-router 10.5.2.174
 ZACBank_R_CL(dhcp-config)#ip dhcp pool recovery
 ZACBank_R_CL(dhcp-config)#no default-router 10.5.2.177
 ZACBank_R_CL(dhcp-config)#default-router 10.5.2.190
+```
 
-//Creating Subinterface for changed default vlan
+**Creating Subinterface for changed default vlan**
+```
 ZACBank_R_CL(config-subif)#interface gigabitEthernet 1/0.200
 ZACBank_R_CL(config-subif)#encapsulation dot1Q 200 native
 ZACBank_R_CL(config-subif)#description native vlan interface
+```
 
-//Administratively shutting unused ports
+**Administratively shutting unused ports**
+```
 ZACBank_R_CL(config)#interface gigabitEthernet 3/0
 ZACBank_R_CL(config-if)#shutdown
 ZACBank_R_CL(config-if)#interface gigabitEthernet 4/0
 ZACBank_R_CL(config-if)#shutdown
+```
 
-//Restricting access to the device for unauthorized users
+**Restricting access to the device for unauthorized users**
+```
 ZACBank_R_CL(config)#enable secret cisco@123
 ZACBank_R_CL(config)#line console 0
 ZACBank_R_CL(config-line)#password cisco@123
@@ -105,10 +116,13 @@ ZACBank_R_CL(config-line)#login local
 ZACBank_R_CL(config-line)#exit
 ZACBank_R_CL(config)#banner motd "Authorized Users Only!"
 ZACBank_R_CL(config)#service password-encryption
+```
 
-//Configure SSH access to the device
+**Configure SSH access to the device**
+```
 ZACBank_R_CL(config)#crypto key generate rsa general-keys modulus 1024
 ZACBank_R_CL(config)#ip ssh version 2
 ZACBank_R_CL(config)#username ZACBank_R_CL secret cisco@123
 ZACBank_R_CL(config)#no ip domain-lookup
+```
 

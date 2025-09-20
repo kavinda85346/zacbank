@@ -1,8 +1,13 @@
-//Changing Default VLAN
+#### ZACBank_L3_S2_DL Device Configuration Alterations ⚙️
+
+**Changing Default VLAN**
+```
 ZACBank_L3_S2_DL(config-vlan)#vlan 200
 ZACBank_L3_S2_DL(config-vlan)#name native
+```
 
-//Trunk Configuration
+**Adding Native VLAN into Trunk Configuration**
+```
 ZACBank_L3_S2_DL(config)#interface range gigabitEthernet 1/0/23-24
 ZACBank_L3_S2_DL(config-if-range)#switchport mode trunk
 ZACBank_L3_S2_DL(config-if-range)#switchport trunk native vlan 200
@@ -14,22 +19,28 @@ ZACBank_L3_S2_DL(config-if)#switchport mode trunk
 ZACBank_L3_S2_DL(config-if)#switchport mode trunk native vlan 200
 ZACBank_L3_S2_DL(config-if)#no switchport trunk allowed vlan 50-176
 ZACBank_L3_S2_DL(config-if)#switchport trunk allowed vlan 50-200
+```
 
-//Assigning unused switchports to crated native vlan 
+**Assigning unused switchports to crated native vlan**
+```
 ZACBank_L3_S2_DL(config-if-range)#interface range gigabitEthernet 1/0/5-22
 ZACBank_L3_S2_DL(config-if-range)#switchport mode access
 ZACBank_L3_S2_DL(config-if-range)#switchport access vlan 200
 ZACBank_L3_S2_DL(config-if-range)#interface range gigabitEthernet 1/1/2-4
 ZACBank_L3_S2_DL(config-if-range)#switchport mode access
 ZACBank_L3_S2_DL(config-if-range)#switchport access vlan 200
+```
 
-//Administratively shutting down unused switchports
+**Administratively shutting down unused switchports**
+```
 ZACBank_L3_S2_DL(config-if-range)#interface range gigabitEthernet 1/0/5-22
 ZACBank_L3_S2_DL(config-if-range)#shutdown
 ZACBank_L3_S2_DL(config-if-range)#interface range gigabitEthernet 1/1/2-4
 ZACBank_L3_S2_DL(config-if-range)#shutdown
+```
 
-//Restricting access to the device for unauthorized users
+**Restricting access to the device for unauthorized users**
+```
 ZACBank_L3_S2_DL(config)#enable secret cisco@123
 ZACBank_L3_S2_DL(config)#line console 0
 ZACBank_L3_S2_DL(config-line)#password cisco@123
@@ -41,9 +52,12 @@ ZACBank_L3_S2_DL(config-line)#login local
 ZACBank_L3_S2_DL(config-line)#exit
 ZACBank_L3_S2_DL(config)#banner motd "Authorized Users Only!"
 ZACBank_L3_S2_DL(config)#service password-encryption
+```
 
-//Configure SSH access to the device
+**Configure SSH access to the device**
+```
 ZACBank_R_CL(config)#crypto key generate rsa general-keys modulus 1024
 ZACBank_R_CL(config)#ip ssh version 2
 ZACBank_R_CL(config)#username ZACBank_L3_S2_DL secret cisco@123
 ZACBank_R_CL(config)#no ip domain-lookup
+```
