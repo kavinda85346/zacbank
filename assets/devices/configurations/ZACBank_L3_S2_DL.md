@@ -1,10 +1,15 @@
-//Startup Configuration
+#### ZACBank_L3_S2_DL Device Configurations ⚙️
+
+**Startup Configuration**
+```
 Switch>enable
 Switch#configure terminal
 Switch(config)#hostname ZACBank_L3_S2_DL
 ZACBank_L3_S2_DL(config)#ip domain-name zacbank.com
+```
 
-//Vlan Configuration
+**Vlan Configuration**
+```
 ZACBank_L3_S2_DL(config)#vlan 50
 ZACBank_L3_S2_DL(config-vlan)#name management
 ZACBank_L3_S2_DL(config-vlan)#vlan 100
@@ -19,8 +24,10 @@ ZACBank_L3_S2_DL(config-vlan)#vlan 160
 ZACBank_L3_S2_DL(config-vlan)#name staff
 ZACBank_L3_S2_DL(config-vlan)#vlan 176
 ZACBank_L3_S2_DL(config-vlan)#name recovery
+```
 
-//Trunk Configuration
+**Trunk Configuration**
+```
 ZACBank_L3_S2_DL(config)#interface range gigabitEthernet 1/0/23-24
 ZACBank_L3_S2_DL(config-if-range)#switchport mode trunk
 ZACBank_L3_S2_DL(config-if-range)#switchport trunk allowed vlan 50-176
@@ -35,5 +42,6 @@ ZACBank_L3_S1_DL(config-if)#interface range gigabitEthernet 1/0/1-4
 ZACBank_L3_S1_DL(config-if-range)#switchport mode trunk
 ZACBank_L3_S1_DL(config-if-range)#switchport trunk allowed vlan 50-176
 ZACBank_L3_S1_DL(config-if-range)#switchport nonegotiate
+```
 
 

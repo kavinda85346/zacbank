@@ -1,10 +1,15 @@
-//Startup Configuration
+#### ZACBank_R_CL Device Configurations ⚙️
+
+**Startup Configuration**
+```
 Router>enable
 Router#configure terminal
 Router(config)#hostname ZACBank_R_CL
 ZACBank_R_CL(config)#ip domain-name zacbank.com
+```
 
-//Subinterface Configuration
+**Subinterface Configuration**
+```
 ZACBank_R_CL(config)#interface gigabitEthernet 0/0.50
 ZACBank_R_CL(config-subif)#ip address 10.5.2.1 255.255.255.224
 ZACBank_R_CL(config-subif)#encapsulation dot1Q 50
@@ -41,8 +46,10 @@ ZACBank_R_CL(config-if)#exit
 ZACBank_R_CL(config)#interface gigabitEthernet 1/0
 ZACBank_R_CL(config-if)#no shutdown
 ZACBank_R_CL(config-if)#exit
+```
 
-//DHCP Pool Configuration
+**DHCP Pool Configuration**
+```
 ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.1 10.5.2.7
 ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.33 10.5.2.39
 ZACBank_R_CL(config)#ip dhcp excluded-address 10.5.2.65 10.5.2.71
@@ -79,3 +86,4 @@ ZACBank_R_CL(dhcp-config)#ip dhcp pool recovery
 ZACBank_R_CL(dhcp-config)#network 10.5.2.176 255.255.255.240
 ZACBank_R_CL(dhcp-config)#domain-name zacbank.com
 ZACBank_R_CL(dhcp-config)#default-router 10.5.2.177
+```
